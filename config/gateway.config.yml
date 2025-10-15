@@ -1,0 +1,208 @@
+http:
+  port: 8080
+
+admin:
+  port: 9876
+  host: localhost
+
+apiEndpoints:
+  products:
+    path: /products/*
+    method: GET,POST,PUT,DELETE
+    pathRegex: ^/products(/.*)?$
+  customers:
+    path: /customers/*
+    method: GET,POST,PUT,DELETE
+    pathRegex: ^/customers(/.*)?$
+  suppliers:
+    path: /suppliers/*
+    method: GET,POST,PUT,DELETE
+    pathRegex: ^/suppliers(/.*)?$
+  sales:
+    path: /sales/*
+    method: GET,POST,PUT,DELETE
+    pathRegex: ^/sales(/.*)?$
+  invoices:
+    path: /invoices/*
+    method: GET,POST,PUT,DELETE
+    pathRegex: ^/invoices(/.*)?$
+  returns:
+    path: /returns/*
+    method: GET,POST,PUT,DELETE
+    pathRegex: ^/returns(/.*)?$
+  expenses:
+    path: /expenses/*
+    method: GET,POST,PUT,DELETE
+    pathRegex: ^/expenses(/.*)?$
+  reports:
+    path: /reports/*
+    method: GET,POST
+  auth:
+    path: /auth/*
+    method: GET,POST
+
+serviceEndpoints:
+  auth-service:
+    url: http://localhost:3000
+  products-service:
+    url: http://localhost:3001
+  customers-service:
+    url: http://localhost:3002
+  sales-service:
+    url: http://localhost:3003
+  invoices-service:
+    url: http://localhost:3004
+  returns-service:
+    url: http://localhost:3005
+  expenses-service:
+    url: http://localhost:3006
+  reports-service:
+    url: http://localhost:3007
+  suppliers-service:
+    url: http://localhost:3008
+
+policies:
+  - basic-auth
+  - cors
+  - expression
+  - key-auth
+  - log
+  - oauth2
+  - proxy
+  - rate-limit
+
+pipelines:
+  auth-pipeline:
+    apiEndpoints:
+      - auth
+    policies:
+      - cors:
+          action:
+            origin: 'http://localhost:33117'
+            methods: 'GET,POST,PUT,DELETE,OPTIONS'
+            allowedHeaders: 'Content-Type, Authorization'
+            credentials: true
+      - proxy:
+          action:
+            serviceEndpoint: auth-service
+            strip_path: true
+
+  products-pipeline:
+    apiEndpoints:
+      - products
+    policies:
+      - cors:
+          action:
+            origin: 'http://localhost:33117'
+            methods: 'GET,POST,PUT,DELETE,OPTIONS'
+            allowedHeaders: 'Content-Type, Authorization'
+            credentials: true
+      - proxy:
+          action:
+            serviceEndpoint: products-service
+            strip_path: true
+
+  customers-pipeline:
+    apiEndpoints:
+      - customers
+    policies:
+      - cors:
+          action:
+            origin: 'http://localhost:33117'
+            methods: 'GET,POST,PUT,DELETE,OPTIONS'
+            allowedHeaders: 'Content-Type, Authorization'
+            credentials: true
+      - proxy:
+          action:
+            serviceEndpoint: customers-service
+            strip_path: true
+
+  suppliers-pipeline:
+    apiEndpoints:
+      - suppliers
+    policies:
+      - cors:
+          action:
+            origin: 'http://localhost:33117'
+            methods: 'GET,POST,PUT,DELETE,OPTIONS'
+            allowedHeaders: 'Content-Type, Authorization'
+            credentials: true
+      - proxy:
+          action:
+            serviceEndpoint: suppliers-service
+            strip_path: true
+
+  sales-pipeline:
+    apiEndpoints:
+      - sales
+    policies:
+      - cors:
+          action:
+            origin: 'http://localhost:33117'
+            methods: 'GET,POST,PUT,DELETE,OPTIONS'
+            allowedHeaders: 'Content-Type, Authorization'
+            credentials: true
+      - proxy:
+          action:
+            serviceEndpoint: sales-service
+            strip_path: true
+
+  invoices-pipeline:
+    apiEndpoints:
+      - invoices
+    policies:
+      - cors:
+          action:
+            origin: 'http://localhost:33117'
+            methods: 'GET,POST,PUT,DELETE,OPTIONS'
+            allowedHeaders: 'Content-Type, Authorization'
+            credentials: true
+      - proxy:
+          action:
+            serviceEndpoint: invoices-service
+            strip_path: true
+
+  returns-pipeline:
+    apiEndpoints:
+      - returns
+    policies:
+      - cors:
+          action:
+            origin: 'http://localhost:33117'
+            methods: 'GET,POST,PUT,DELETE,OPTIONS'
+            allowedHeaders: 'Content-Type, Authorization'
+            credentials: true
+      - proxy:
+          action:
+            serviceEndpoint: returns-service
+            strip_path: true
+
+  expenses-pipeline:
+    apiEndpoints:
+      - expenses
+    policies:
+      - cors:
+          action:
+            origin: 'http://localhost:33117'
+            methods: 'GET,POST,PUT,DELETE,OPTIONS'
+            allowedHeaders: 'Content-Type, Authorization'
+            credentials: true
+      - proxy:
+          action:
+            serviceEndpoint: expenses-service
+            strip_path: true
+
+  reports-pipeline:
+    apiEndpoints:
+      - reports
+    policies:
+      - cors:
+          action:
+            origin: 'http://localhost:33117'
+            methods: 'GET,POST,PUT,DELETE,OPTIONS'
+            allowedHeaders: 'Content-Type, Authorization'
+            credentials: true
+      - proxy:
+          action:
+            serviceEndpoint: reports-service
+            strip_path: true

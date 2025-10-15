@@ -1,0 +1,1 @@
+ALTER TABLE "accounts_product" ALTER COLUMN "price" SET NOT NULL;

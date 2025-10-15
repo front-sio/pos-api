@@ -1,0 +1,30 @@
+{
+  "name": "reports-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migrate:dev": "drizzle-kit generate",
+    "migrate:up": "drizzle-kit push",
+    "migrate:status": "drizzle-kit status",
+    "studio": "exec drizzle-kit studio"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.17.1",
+  "dependencies": {
+    "drizzle-orm": "^0.44.5",
+    "express": "^5.1.0",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.6.0",
+    "@types/pg": "^8.15.5",
+    "drizzle-kit": "^0.31.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}

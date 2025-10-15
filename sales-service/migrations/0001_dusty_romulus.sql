@@ -1,0 +1,3 @@
+ALTER TABLE "accounts_profittracker" ADD COLUMN "sale_id" integer NOT NULL;--> statement-breakpoint
+ALTER TABLE "accounts_profittracker" ADD COLUMN "created_at" timestamp DEFAULT now() NOT NULL;--> statement-breakpoint
+ALTER TABLE "accounts_profittracker" ADD CONSTRAINT "accounts_profittracker_sale_id_accounts_sale_id_fk" FOREIGN KEY ("sale_id") REFERENCES "public"."accounts_sale"("id") ON DELETE no action ON UPDATE no action;

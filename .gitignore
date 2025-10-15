@@ -1,0 +1,18 @@
+# Ignore all node_modules folders recursively
+**/node_modules
+
+# Ignore logs
+**/logs
+*.log
+
+# Ignore environment files
+.env
+**/.env
+
+# Ignore build or dist folders (if any)
+**/dist
+**/build
+
+# Ignore coverage/test outputs
+coverage
+**/coverage

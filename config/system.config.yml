@@ -1,0 +1,24 @@
+# Core system settings
+db:
+  redis:
+    emulate: true
+    namespace: EG
+
+crypto:
+  cipherKey: sensitiveKey
+  algorithm: aes256
+  saltRounds: 10
+
+# Express session settings
+session:
+  secret: keyboard cat
+  resave: false
+  saveUninitialized: false
+
+# OAuth2 Settings
+accessTokens:
+  timeToExpiry: 7200000   # 2 hours
+refreshTokens:
+  timeToExpiry: 7200000
+authorizationCodes:
+  timeToExpiry: 300000    # 5 minutes

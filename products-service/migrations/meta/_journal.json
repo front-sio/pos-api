@@ -1,0 +1,55 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1759344562989,
+      "tag": "0000_familiar_felicia_hardy",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1759740751315,
+      "tag": "0001_old_earthquake",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1759742367875,
+      "tag": "0002_keen_carnage",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1760013873564,
+      "tag": "0003_lame_the_leader",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1760039128917,
+      "tag": "0004_keen_daimon_hellstrom",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1760039643497,
+      "tag": "0005_eminent_alice",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1760073758806,
+      "tag": "0006_wild_vertigo",
+      "breakpoints": true
+    }
+  ]
+}

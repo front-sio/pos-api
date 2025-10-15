@@ -1,0 +1,1 @@
+ALTER TABLE "accounts_stocktransaction" ADD COLUMN "supplier_id" integer;

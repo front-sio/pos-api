@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "title": "CreateProduct",
+      "type": "object",
+      "required": ["name", "price", "sku"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "sku": { "type": "string", "minLength": 3, "maxLength": 50 },
+        "price": { "type": "number", "minimum": 0 },
+        "currency": { "type": "string", "pattern": "^[A-Z]{3}$", "default": "USD" },
+        "tags": { "type": "array", "items": { "type": "string" }, "maxItems": 20 }
+      }
+    },
+    {
+      "title": "UpdateProduct",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "sku": { "type": "string", "minLength": 3, "maxLength": 50 },
+        "price": { "type": "number", "minimum": 0 },
+        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "tags": { "type": "array", "items": { "type": "string" }, "maxItems": 20 }
+      }
+    }
+  ]
+}
