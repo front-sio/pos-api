@@ -1,0 +1,1 @@
+{"root":["./src/index.ts","./src/db/db.ts","./src/db/schema/accounts_expense.ts","./src/db/schema/index.ts","./src/routes/expenses.ts","./src/services/expenseService.ts"],"version":"5.9.2"}
