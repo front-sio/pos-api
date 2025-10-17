@@ -6,8 +6,8 @@
 *.log
 
 # Ignore environment files
-# .env
-# **/.env
+.env
+**/.env
 
 # Ignore build or dist folders (if any)
 **/dist
