@@ -2,44 +2,37 @@ http:
   port: 8080
 
 admin:
-  port: 9876
+  port: 9877
   host: localhost
 
 apiEndpoints:
   products:
     path: /products/*
-    method: GET,POST,PUT,DELETE
-    pathRegex: ^/products(/.*)?$
+    methods: [OPTIONS, GET, POST, PUT, DELETE]
   customers:
     path: /customers/*
-    method: GET,POST,PUT,DELETE
-    pathRegex: ^/customers(/.*)?$
+    methods: [OPTIONS, GET, POST, PUT, DELETE]
   suppliers:
     path: /suppliers/*
-    method: GET,POST,PUT,DELETE
-    pathRegex: ^/suppliers(/.*)?$
+    methods: [OPTIONS, GET, POST, PUT, DELETE]
   sales:
     path: /sales/*
-    method: GET,POST,PUT,DELETE
-    pathRegex: ^/sales(/.*)?$
+    methods: [OPTIONS, GET, POST, PUT, DELETE]
   invoices:
     path: /invoices/*
-    method: GET,POST,PUT,DELETE
-    pathRegex: ^/invoices(/.*)?$
+    methods: [OPTIONS, GET, POST, PUT, DELETE]
   returns:
     path: /returns/*
-    method: GET,POST,PUT,DELETE
-    pathRegex: ^/returns(/.*)?$
+    methods: [OPTIONS, GET, POST, PUT, DELETE]
   expenses:
     path: /expenses/*
-    method: GET,POST,PUT,DELETE
-    pathRegex: ^/expenses(/.*)?$
+    methods: [OPTIONS, GET, POST, PUT, DELETE]
   reports:
     path: /reports/*
-    method: GET,POST
+    methods: [OPTIONS, GET, POST]
   auth:
     path: /auth/*
-    method: GET,POST
+    methods: [OPTIONS, GET, POST]
 
 serviceEndpoints:
   auth-service:
@@ -78,14 +71,16 @@ pipelines:
     policies:
       - cors:
           action:
-            origin: 'http://localhost:33117'
+            origin:
+              - 'http://localhost:33117'
+              - 'https://pos-app-sooty.vercel.app'
             methods: 'GET,POST,PUT,DELETE,OPTIONS'
             allowedHeaders: 'Content-Type, Authorization'
             credentials: true
       - proxy:
           action:
             serviceEndpoint: auth-service
-            strip_path: true
+            stripPath: false
 
   products-pipeline:
     apiEndpoints:
@@ -93,14 +88,16 @@ pipelines:
     policies:
       - cors:
           action:
-            origin: 'http://localhost:33117'
+            origin:
+              - 'http://localhost:33117'
+              - 'https://pos-app-sooty.vercel.app'
             methods: 'GET,POST,PUT,DELETE,OPTIONS'
             allowedHeaders: 'Content-Type, Authorization'
             credentials: true
       - proxy:
           action:
             serviceEndpoint: products-service
-            strip_path: true
+            stripPath: true
 
   customers-pipeline:
     apiEndpoints:
@@ -108,14 +105,16 @@ pipelines:
     policies:
       - cors:
           action:
-            origin: 'http://localhost:33117'
+            origin:
+              - 'http://localhost:33117'
+              - 'https://pos-app-sooty.vercel.app'
             methods: 'GET,POST,PUT,DELETE,OPTIONS'
             allowedHeaders: 'Content-Type, Authorization'
             credentials: true
       - proxy:
           action:
             serviceEndpoint: customers-service
-            strip_path: true
+            stripPath: true
 
   suppliers-pipeline:
     apiEndpoints:
@@ -123,14 +122,16 @@ pipelines:
     policies:
       - cors:
           action:
-            origin: 'http://localhost:33117'
+            origin:
+              - 'http://localhost:33117'
+              - 'https://pos-app-sooty.vercel.app'
             methods: 'GET,POST,PUT,DELETE,OPTIONS'
             allowedHeaders: 'Content-Type, Authorization'
             credentials: true
       - proxy:
           action:
             serviceEndpoint: suppliers-service
-            strip_path: true
+            stripPath: true
 
   sales-pipeline:
     apiEndpoints:
@@ -138,14 +139,16 @@ pipelines:
     policies:
       - cors:
           action:
-            origin: 'http://localhost:33117'
+            origin:
+              - 'http://localhost:33117'
+              - 'https://pos-app-sooty.vercel.app'
             methods: 'GET,POST,PUT,DELETE,OPTIONS'
             allowedHeaders: 'Content-Type, Authorization'
             credentials: true
       - proxy:
           action:
             serviceEndpoint: sales-service
-            strip_path: true
+            stripPath: true
 
   invoices-pipeline:
     apiEndpoints:
@@ -153,14 +156,16 @@ pipelines:
     policies:
       - cors:
           action:
-            origin: 'http://localhost:33117'
+            origin:
+              - 'http://localhost:33117'
+              - 'https://pos-app-sooty.vercel.app'
             methods: 'GET,POST,PUT,DELETE,OPTIONS'
             allowedHeaders: 'Content-Type, Authorization'
             credentials: true
       - proxy:
           action:
             serviceEndpoint: invoices-service
-            strip_path: true
+            stripPath: true
 
   returns-pipeline:
     apiEndpoints:
@@ -168,14 +173,16 @@ pipelines:
     policies:
       - cors:
           action:
-            origin: 'http://localhost:33117'
+            origin:
+              - 'http://localhost:33117'
+              - 'https://pos-app-sooty.vercel.app'
             methods: 'GET,POST,PUT,DELETE,OPTIONS'
             allowedHeaders: 'Content-Type, Authorization'
             credentials: true
       - proxy:
           action:
             serviceEndpoint: returns-service
-            strip_path: true
+            stripPath: true
 
   expenses-pipeline:
     apiEndpoints:
@@ -183,14 +190,16 @@ pipelines:
     policies:
       - cors:
           action:
-            origin: 'http://localhost:33117'
+            origin:
+              - 'http://localhost:33117'
+              - 'https://pos-app-sooty.vercel.app'
             methods: 'GET,POST,PUT,DELETE,OPTIONS'
             allowedHeaders: 'Content-Type, Authorization'
             credentials: true
       - proxy:
           action:
             serviceEndpoint: expenses-service
-            strip_path: true
+            stripPath: true
 
   reports-pipeline:
     apiEndpoints:
@@ -198,11 +207,13 @@ pipelines:
     policies:
       - cors:
           action:
-            origin: 'http://localhost:33117'
-            methods: 'GET,POST,PUT,DELETE,OPTIONS'
+            origin:
+              - 'http://localhost:33117'
+              - 'https://pos-app-sooty.vercel.app'
+            methods: 'GET,POST'
             allowedHeaders: 'Content-Type, Authorization'
             credentials: true
       - proxy:
           action:
             serviceEndpoint: reports-service
-            strip_path: true
+            stripPath: true
