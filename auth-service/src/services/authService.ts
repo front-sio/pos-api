@@ -77,7 +77,6 @@ export async function registerUser(req: Request, res: Response) {
         is_active: true,
         is_staff: false,
         is_superuser: false,
-        // last_login left as NULL; date_joined defaults now() on DB side
       })
       .returning({ id: auth_user.id });
 
