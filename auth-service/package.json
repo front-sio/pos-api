@@ -8,7 +8,8 @@
     "migrate:dev": "drizzle-kit generate",
     "migrate:up": "drizzle-kit push",
     "migrate:status": "drizzle-kit status",
-    "studio": "exec drizzle-kit studio"
+    "studio": "exec drizzle-kit studio",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
