@@ -3,7 +3,7 @@ import { pgTable, serial, varchar, boolean, timestamp } from "drizzle-orm/pg-cor
 export const auth_user = pgTable("auth_user", {
   id: serial("id").primaryKey(),
   password: varchar("password", { length: 128 }).notNull(),
-  last_login: timestamp("last_login", { mode: "date" }),
+  last_login: timestamp("last_login", { mode: "date" }).$type<Date | null>().default(null),
   is_superuser: boolean("is_superuser").notNull().default(false),
   username: varchar("username", { length: 150 }).notNull().unique(),
   first_name: varchar("first_name", { length: 150 }).notNull(),
@@ -11,5 +11,5 @@ export const auth_user = pgTable("auth_user", {
   email: varchar("email", { length: 254 }).notNull(),
   is_staff: boolean("is_staff").notNull().default(false),
   is_active: boolean("is_active").notNull().default(true),
-  date_joined: timestamp("date_joined", { mode: "date" }).defaultNow().notNull(),
+  date_joined: timestamp("date_joined", { mode: "date" }).defaultNow(),
 });
