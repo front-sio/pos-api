@@ -3,8 +3,10 @@ import { pgTable, serial, varchar, boolean, timestamp } from "drizzle-orm/pg-cor
 export const auth_user = pgTable("auth_user", {
   id: serial("id").primaryKey(),
   password: varchar("password", { length: 128 }).notNull(),
-  // Django: nullable DateTimeField with timezone
-  last_login: timestamp("last_login", { withTimezone: true, mode: "date" }).$type<Date | null>(),
+
+  // Nullable last_login
+  last_login: timestamp("last_login", { withTimezone: true }).$type<Date | null>(),
+
   is_superuser: boolean("is_superuser").notNull().default(false),
   username: varchar("username", { length: 150 }).notNull().unique(),
   first_name: varchar("first_name", { length: 150 }).notNull(),
@@ -12,6 +14,7 @@ export const auth_user = pgTable("auth_user", {
   email: varchar("email", { length: 254 }).notNull(),
   is_staff: boolean("is_staff").notNull().default(false),
   is_active: boolean("is_active").notNull().default(true),
-  // Django: not null with default now(), with timezone
-  date_joined: timestamp("date_joined", { withTimezone: true, mode: "date" }).defaultNow().notNull(),
+
+  // date_joined: defaultNow is enough, remove mode
+  date_joined: timestamp("date_joined", { withTimezone: true }).defaultNow().notNull(),
 });
