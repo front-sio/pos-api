@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/src/index.js",
+    "start": "ts-node src/index.ts",
     "migrate:dev": "drizzle-kit generate",
     "migrate:up": "drizzle-kit push",
     "migrate:status": "drizzle-kit status",
