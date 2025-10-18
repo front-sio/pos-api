@@ -36,7 +36,7 @@ apiEndpoints:
 
 serviceEndpoints:
   auth-service:
-    url: http://localhost:3000
+    url: http://localhost:3012
   products-service:
     url: http://localhost:3001
   customers-service:
