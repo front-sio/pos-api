@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
   res.send("Auth Service Running!");
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3012;
 app.listen(PORT, () => {
   console.log(`Auth service running on port ${PORT}`);
 });
