@@ -39,6 +39,7 @@ function normalizeEmail(value: string) {
 }
 
 // Register new user (bcrypt)
+// Register new user (bcrypt)
 export async function registerUser(req: Request, res: Response) {
   const username = normalize(req.body?.username);
   const password = req.body?.password;
@@ -66,6 +67,7 @@ export async function registerUser(req: Request, res: Response) {
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
+    // Only insert required fields; let DB fill defaults like date_joined and last_login
     const result = await db
       .insert(auth_user)
       .values({
@@ -77,6 +79,7 @@ export async function registerUser(req: Request, res: Response) {
         is_active: true,
         is_staff: false,
         is_superuser: false,
+        // do not set date_joined or last_login
       })
       .returning({ id: auth_user.id });
 
@@ -84,7 +87,6 @@ export async function registerUser(req: Request, res: Response) {
   } catch (err: any) {
     // Postgres duplicate key
     if (err?.code === "23505") {
-      // If DB reveals which constraint, map it
       const msg =
         err?.detail?.includes("username") || err?.constraint?.includes("username")
           ? "A user with this username already exists"
@@ -98,6 +100,7 @@ export async function registerUser(req: Request, res: Response) {
     return res.status(500).json({ message: "Registration failed" });
   }
 }
+
 
 // Login user (bcrypt + Django PBKDF2)
 export async function loginUser(req: Request, res: Response) {
