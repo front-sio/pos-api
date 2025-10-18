@@ -1,1 +1,0 @@
-ALTER TABLE "auth_user" ALTER COLUMN "date_joined" SET DEFAULT now();
